@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily e a Casa do Sonho</title>
+    <style>
+        /* Configurações Globais e Estilo Clássico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #363636; /* Cor Grafite */
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #0b4626; /* Verde Predominante */
+            font-weight: normal;
+        }
+
+        /* Cabeçalho */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #ffffff;
+            border-bottom: 3px solid #d4af37; /* Traço Dourado */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0b4626;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #363636;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .btn-whats {
+            background-color: #0b4626;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+            font-weight: bold;
+        }
+
+        .btn-whats:hover {
+            background-color: #d4af37;
+            color: #0b4626;
+        }
+
+        /* Banner Principal (Hero) */
+        .hero {
+            position: relative;
+            height: 60vh;
+            background-image: url('estacao_de_trem_de_vianópolis-2.jpg'); /* Substituir pela imagem correspondente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            color: #0b4626;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+        }
+
+        /* Seção 1: História de Emily */
+        .section-story {
+            display: flex;
+            padding: 60px 8%;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .story-img {
+            width: 300px;
+            height: 456px;
+            object-fit: cover;
+            border: 2px solid #d4af37;
+            flex-shrink: 0;
+        }
+
+        .story-text {
+            flex-grow: 1;
+        }
+
+        .story-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        .story-text h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 10px 0;
+        }
+
+        .story-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .story-text ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .story-text li {
+            margin-bottom: 8px;
+        }
+
+        /* Seção 2: Banner de Impacto */
+        .section-impact {
+            position: relative;
+            height: 35vh;
+            background-image: url('sua-imagem-background-impacto.png'); /* Substituir pela imagem correspondente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .section-impact::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 70, 38, 0.7); /* Filtro verde translúcido */
+            z-index: 1;
+        }
+
+        .impact-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            font-size: 1.8rem;
+            max-width: 900px;
+            padding: 0 20px;
+            font-style: italic;
+        }
+
+        /* Seção 3: Galeria de Imagens Grid */
+        .section-gallery {
+            padding: 60px 8%;
+            background-color: #fafafa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid #363636; /* Fino filete grafite */
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Seção 4: Google Maps */
+        .section-map {
+            width: 100%;
+            height: 400px;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            overflow: hidden;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .map-container:hover {
+            filter: grayscale(0%);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Seção 5: História de Vianópolis */
+        .section-vianopolis {
+            padding: 60px 8%;
+            background-color: #ffffff;
+        }
+
+        .section-vianopolis h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        /* Seção 6: Background Total */
+        .section-bg-total {
+            height: 50vh;
+            background-image: url('vianopolis-do-alto.jpeg'); /* Substituir pela imagem correspondente */
+            background-size: cover;
+            background-position: center;
+            border-top: 2px solid #d4af37;
+        }
+
+        /* Seção 7: Detalhes da Estação */
+        .section-station {
+            padding: 60px 8%;
+            background-color: #fafafa;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .section-station p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0b4626;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 900px) {
+            .section-story {
+                flex-direction: column;
+                align-items: center;
+            }
+            .story-img {
+                width: 100%;
+                height: auto;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+        }
+        
+        /* Seção de Valores e Planta Baixa */
+        .section-details {
+            display: flex;
+            padding: 60px 8%;
+            gap: 50px;
+            background-color: #ffffff;
+            border-top: 2px solid #d4af37;
+            align-items: center;
+        }
+
+        .details-info {
+            flex: 1;
+        }
+
+        .details-info h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        .details-info h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+            color: #0b4626;
+        }
+
+        .table-specs {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table-specs td {
+            padding: 10px 0;
+            border-bottom: 1px solid #eaeaea;
+            color: #363636;
+        }
+
+        .rooms-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .rooms-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #363636;
+        }
+
+        .rooms-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #d4af37; /* Detalhe em dourado */
+            font-weight: bold;
+        }
+
+        .price-tag {
+            background-color: #fafafa;
+            border-left: 4px solid #0b4626;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .price-label {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        .price-value {
+            display: block;
+            font-size: 2.2rem;
+            color: #0b4626;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .price-tag p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Lado da Planta Baixa */
+        .details-blueprint {
+            flex: 1;
+            text-align: center;
+        }
+
+        .details-blueprint h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #0b4626;
+        }
+
+        .blueprint-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border: 1px solid #363636; /* Fino filete grafite */
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            filter: grayscale(100%);
+            transition: filter 0.5s ease, transform 0.3s ease;
+        }
+
+        .blueprint-img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02); /* Leve efeito de zoom ao passar o mouse */
+        }
+
+        /* Ajuste de responsividade para telas menores */
+        @media (max-width: 900px) {
+            .section-details {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .blueprint-img {
+                width: 100%;
+            }
+        }
+        /* Seção de Contato dos Proprietários */
+        .section-owners {
+            padding: 60px 8%;
+            background-color: #fafafa;
+            border-top: 2px solid #d4af37;
+        }
+
+        .owners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .owners-container h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #0b4626;
+        }
+
+        .owners-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .owners-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .owner-card {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #363636; /* Fino filete grafite */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .owner-card:hover {
+            transform: translateY(-2px);
+            border-color: #d4af37; /* Muda para dourado ao passar o mouse */
+        }
+
+        .owner-avatar-container {
+            flex-shrink: 0;
+            margin-right: 30px;
+        }
+
+        .owner-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Foto perfeitamente redonda */
+            object-fit: cover;
+            border: 2px solid #0b4626; /* Borda verde ao redor da foto */
+            filter: grayscale(100%);
+            transition: filter 0.4s ease;
+        }
+
+        .owner-card:hover .owner-avatar {
+            filter: grayscale(0%); /* Foto fica colorida no hover do card */
+        }
+
+        .owner-info {
+            flex-grow: 1;
+        }
+
+        .owner-info h3 {
+            font-size: 1.5rem;
+            color: #0b4626;
+            margin-bottom: 5px;
+        }
+
+        .owner-role {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .owner-contact-btn {
+            display: inline-block;
+            background-color: #0b4626;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #d4af37;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .owner-contact-btn:hover {
+            background-color: #d4af37;
+            color: #0b4626;
+        }
+
+        /* Responsividade para telas de celulares */
+        @media (max-width: 600px) {
+            .owner-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            
+            .owner-avatar-container {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Emily e a Casa do Sonho</a>
+        <nav>
+            <a href="#casa-legado">Casa Legado</a>
+            <a href="#historia">História</a>
+            <a href="https://wa.me/5564992962999?text=Olá!%20Estou%20interessado%20em%20comprar%20a%20casa%20do%20sonho." target="_blank" class="btn-whats">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Compre sua Casa e um legado de um sonho encantado.</h2>
+        </div>
+    </section>
+
+    <section class="section-story" id="historia">
+        <img src="emily.jpg" alt="Casa do Sonho" class="story-img">
+        <div class="story-text">
+            <h2>Emily (Maria Amélia) e a Casa do Sonho</h2>
+            <p>O vento que sobrava em Vianópolis sempre trouxe consigo um perfume de terra molhada, misturado ao doce do canavial que crescia nos fundos da chácara de Dona Nega. Para a jovem Emily — que o mundo conhecia também como Maria Amélia —, aquele aroma era a definição exata de lar. Nascida na vizinha Silvânia, Emily cresceu em uma pequena cidade do interior goiano que transbordava uma energia mágica. Ali, enquanto muitos jovens olhavam para as estrelas tentando decifrar o futuro, Emily usava sua inteligência aguçada e sua alegria contagiante para construir o seu próprio destino, alimentada pelo desejo profundo de ser feliz e viver intensamente.</p>
+            
+            <p>A velha chácara de sua infância era um reino de simplicidade e riqueza inigualável, cercada por um imenso e forte muro de adobe. Na cozinha, o fogão a lenha parecia conversar com o forno, operando milagres sob as mãos prendadas de Dona Nega, que sustentava a casa com o aluguel da casa vizinha, seus crochês, bolos e o famoso sabão de bola preta. Enquanto o quintal brilhava com seus abacateiros, mangueiras e limoeiros, Emily guardava na mente cada detalhe daquele refúgio que parecia saído das páginas do <em>Sítio do Picapau Amarelo</em>.</p>
+            
+            <p>Mas o mundo era grande demais para aquela jovem de dons extraordinários.</p>
+
+            <h3>Os Caminhos do Mundo</h3>
+            <p>A vida de Emily mudou de rumo quando ela foi trabalhar com uma família de americanos. O carinho foi tanto que ela logo se tornou parte da família, e sua mente brilhante fez com que ela dominasse a língua inglesa num estalar de dedos. Emily cresceu, casou-se e deu vida a quatro tesouros: Cláudia, Ricardo, Henrique e Sandra.</p>
+            <p>Sua paixão pelo idioma a levou a se graduar e se especializar em Anápolis e Goiânia. Emily transformou-se em uma professora admirada, espalhando o conhecimento para tantos outros jovens de Vianópolis. Anos mais tarde, o destino a levou a cruzar oceanos. Emily viveu nos Estados Unidos, conquistou a naturalização e tornou-se cidadã americana. No entanto, nem os arranha-céus e nem as terras estrangeiras conseguiram apagar as cores do cerrado de sua memória. A saudade de sua mãe, de seus irmãos e do chão onde correu descalça falou mais alto. Era hora de voltar para casa.</p>
+
+            <h3>O Alicerce de um Sonho</h3>
+            <p id="casa-legado">De volta a Vianópolis, Emily não queria apenas regressar; ela queria fincar suas conquistas na terra que a viu crescer. Comprou alguns lotes na cidade e, em um deles, começou a desenhar, linha por linha, o seu grande sonho: a sua casa ideal. Cada tijolo erguido carregava o peso de sua história, o suor de seus estudos no exterior e o toque inconfundível de uma grande vitória.</p>
+            <p>A casa nasceu belíssima, exatamente como ela havia projetado em seus pensamentos mais generosos:</p>
+            <ul>
+                <li><strong>Acolhimento:</strong> Uma sala ampla e iluminada para receber os filhos, os netos e os amigos com longas conversas;</li>
+                <li><strong>Conforto:</strong> Três quartos espaçosos, sendo um deles uma suíte aconchegante, o seu refúgio particular;</li>
+                <li><strong>Funcionalidade:</strong> Uma cozinha moderna e banheiros impecáveis, unindo a praticidade à beleza;</li>
+                <li><strong>Afeto:</strong> Uma charmosa área na frente para ver o movimento calmo da cidade e uma varanda espaçosa no fundo, o lugar perfeito para descansar no fim de tarde.</li>
+            </ul>
+
+            <h3>O Jardim Encantado de Emily</h3>
+            <p>Se a casa era o monumento de sua vitória, o grande quintal era o palco onde o passado e o futuro se abraçavam. Olhando para a terra preta e fértil dos fundos, Emily não via apenas um terreno vazio, mas sim a continuação da chácara de Dona Nega.</p>
+            <p>Ali, com as próprias mãos, ela começou a desenhar o seu pomar e o seu jardim encantado. A cada nova muda de árvore frutífera plantada e a cada flor que desabrochava, Emily revivia a infância, honrando a força de sua mãe — que a essa altura já lia e escrevia com o neto Henrique. Sob o céu azul de Goiás, na varanda de sua casa dos sonhos, Emily (Maria Amélia) finalmente sorriu, sabendo que tinha viajado o mundo inteiro apenas para descobrir que o lugar mais feliz do universo era aquele que ela mesma havia reconstruído em suas origens.</p>
+        </div>
+    </section>
+
+    <section class="section-impact">
+        <div class="impact-content">
+            "Compre sua casa em Vianópolis, que será base para um futuro livro da História de Emily."
+        </div>
+    </section>
+
+    <section class="section-gallery">
+        <div class="gallery-grid">
+            <img src="foto1.png" alt="Galeria 1" class="gallery-item">
+            <img src="foto2.png" alt="Galeria 2" class="gallery-item">
+            <img src="foto3.png" alt="Galeria 3" class="gallery-item">
+            <img src="foto4.png" alt="Galeria 4" class="gallery-item">
+            <img src="foto5.png" alt="Galeria 5" class="gallery-item">
+            <img src="foto6.png" alt="Galeria 6" class="gallery-item">
+            <img src="foto7.png" alt="Galeria 7" class="gallery-item">
+            <img src="foto8.png" alt="Galeria 8" class="gallery-item">
+        </div>
+    </section>
+
+    <section class="section-map">
+        <div class="map-container" id="mapa-interativo">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15239.317529402517!2d-48.522245362544256!3d-16.742219437153775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935eec0614f2dbdb%3A0x67399f92934f828a!2sVian%C3%B3polis%2C%20GO%2C%2075260-000!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="section-vianopolis">
+        <h2>Conheça Vianópolis - História</h2>
+        <p>Antes de se tornar município, a região ficou conhecida como “Pouso do Carreiro” por ser o ponto de parada dos boiadeiros e tropeiros. Era também chamada de “Cabeceira da Vereda”, devido ao córrego do mesmo nome. Mais tarde, o lugar passou a ser chamado de “Estação Tavares”, que recebeu essa denominação em homenagem à família Tavares, que na época era dona das terras onde começou a cidade. Foi aí que o coronel Felismino de Souza Viana logo adquiriu dois alqueires da área e deu início à formação da cidade.</p>
+        <p>O nome Vianópolis é em homenagem ao fundador.</p>
+    </section>
+
+    <section class="section-bg-total"></section>
+
+    <section class="section-station">
+        <p><strong>A ESTAÇÃO:</strong> A estação de Vianópolis foi inaugurada em 1924.</p>
+        <p>Em 1930, uma antropologista da Universidade da California, Elizabeth Steen, veio sozinha para o Brasil para passar quase um ano estudando in loco os indígenas dos Estados de Goiás e de Mato Grosso. Em entrevista para a revista O Cruzeiro, de 27/12/1930, Elizabeth contou que chegou no país pelo Rio de Janeiro e de lá foi a São Paulo; ali tomou o trem (pela Mogiana, provavelmente) até a estação de Vianópolis, em Goiás, e, de lá, "em auto-caminhão, por estradas difíceis de percorrer, foi à capital do Estado" (na época, Goiás Velho) e depois "às margens do Araguaia, para descer o rio em batelão e semanas depois, estava na ilha do Bananal, no Posto de Santa Isabel, em plena região dos índios carajás".</p>
+        <p>"Antigamente a estação tinha o nome de Tavares, em homenagem à fazenda de mesmo nome, de Felismino de Souza Viana que, juntamente com o empresário Levy Fróes, construiu, um ano depois de inaugurada a estação, a mais possante usina hidrelétrica do estado de Goiás na época. Anos mais tarde, a estação recebeu o nome de Vianópolis em homenagem ao dono da fazenda Tavares. Depois de inaugurada esta estação, a ferrovia enfrentou muitos problemas financeiros e políticos, permanecendo a cidade como ponta de linha por um período de seis anos, o que, aliada à eletricidade, trouxe considerável desenvolvimento à localidade, na época pertencente a Bonfim, atual Silvânia. A estação está conservada, sendo utilizada por várias repartições públicas como 'Agrodefesa de Goiás', 'Junta do Serviço Militar', 'Banco do Povo' e a Secretaria Municipal do Meio Ambiente. Ainda dispõe de duas caixas d'água de metal, casa do chefe de estação, algumas casas de funcionários e um antigo alojamento que hoje funciona como sede de uma cooperativa de costureiras" (Glaucio H. Chaves, 02/2009).</p>
+        <p>É curioso saber que, durante a construção de Brasília, na segunda metade dos anos 1950, o melhor transporte para quem ia do sul do País para Brasilia era pelo trem, descendo em Vianópolis e tomando um ônibus que estava sempre à disposição nos horários de chegada do trem à estação.</p>
+        <p><strong>HISTORICO DA LINHA:</strong> A linha-tronco da E. F. Goiaz foi aberta a partir de Araguari, onde já estavam os trilhos da Mogiana desde o ano de 1896, em seu primeiro trecho in 1911, até a ponte sobre o rio Paranaíba, na divisa entre os Estados de Minas Gerais e Goiás. A partir de então, foi aquela demora de sempre: avançando lentamente, atingiu Goiânia, capital do Estado de Goiás desde o início dos anos 1940, somente em 1950, e alguns anos mais tarde a linha foi prolongada em dois quilômetros até Campinas de Goiás. Aí parou. Com a entrada em operação da linha para Brasilia, a partir da estação de Roncador, o trecho até Goiânia perdeu em importância. Hoje boa parte da linha está em operação para trens cargueiros: trens de passageiros acabaram nos anos 1980.</p>
+        <p>Prefixo: EVI Coordenadas: 16°44'31.99"S 48°30'51.83"W. Em 2005, a estação estava servindo como Banco do Povo. Em julho de 2023, estava sendo recuperada novamente pela VLI.</p>
+    </section>
+
+<section class="section-details" id="casa-valores">
+        <div class="details-info">
+            <h2>Dados do Imóvel e Valores</h2>
+            
+            <table class="table-specs">
+                <tr>
+                    <td><strong>Localização:</strong></td>
+                    <td>Vianópolis - GO</td>
+                </tr>
+                <tr>
+                    <td><strong>Tipo:</strong></td>
+                    <td>Casa Residencial</td>
+                </tr>
+                <tr>
+                    <td><strong>Destaque:</strong></td>
+                    <td>Alto padrão com quintal para pomar encantado</td>
+                </tr>
+            </table>
+
+            <h3>Compartimentos da Casa</h3>
+            <ul class="rooms-list">
+                <li>03 Quartos (sendo 01 Suíte aconchegante)</li>
+                <li>01 Sala de estar ampla e iluminada</li>
+                <li>01 Cozinha moderna e funcional</li>
+                <li>01 Banheiro social impecável</li>
+                <li>Charme extra: Área na frente e Varanda espaçosa nos fundos</li>
+                <li>Quintal grande planejado para jardim e pomar</li>
+                
+                <li>Preço Especial R$ 900.000,00</li>
+            </ul>
+
+            <div class="price-tag">
+                <span class="price-label">Valor do Investimento</span>
+                <span class="price-value">Sob Consulta</span>
+                <p>Entre em contato para condições especiais.</p>
+            </div>
+        </div>
+
+        <div class="details-blueprint">
+            <h3>Planta Baixa do Sonho</h3>
+            <img src="planta-baixa.png" alt="Planta Baixa da Casa" class="blueprint-img">
+        </div>
+    </section>
+
+<section class="section-owners" id="contato-proprietarios">
+        <div class="owners-container">
+            <h2>Fale com os Proprietários</h2>
+            <p class="owners-subtitle">Entre em contato diretamente com a família para negociar a Casa do Sonho:</p>
+            
+            <div class="owners-grid">
+                <div class="owner-card">
+                    <div class="owner-avatar-container">
+                        <img src="ricardo.jpg" alt="Ricardo" class="owner-avatar">
+                    </div>
+                    <div class="owner-info">
+                        <h3>Ricardo</h3>
+                        <p class="owner-role">Proprietário / Negociação Direta</p>
+                        <a href="https://wa.me/5562981804927?text=Olá%20Ricardo,%20estou%20interessado%20na%20Casa%20do%20Sonho." target="_blank" class="owner-contact-btn">
+                            Falar com Ricardo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="owner-card">
+                    <div class="owner-avatar-container">
+                        <img src="sandra.jpg" alt="Sandra" class="owner-avatar">
+                    </div>
+                    <div class="owner-info">
+                        <h3>Sandra</h3>
+                        <p class="owner-role">Proprietária / Negociação Direta</p>
+                        <a href="https://wa.me/5562999668452?text=Olá%20Sandra,%20estou%20interessado%20na%20Casa%20do%20Sonho." target="_blank" class="owner-contact-btn">
+                            Falar com Sandra
+                        </a>
+                    </div>
+                </div>
+
+                <div class="owner-card">
+                    <div class="owner-avatar-container">
+                        <img src="henrique.jpg" alt="Henrique" class="owner-avatar">
+                    </div>
+                    <div class="owner-info">
+                        <h3>Henrique</h3>
+                        <p class="owner-role">Proprietário / Negociação Direta</p>
+                        <a href="https://wa.me/5564992962999?text=Olá%20Henrique,%20estou%20interessado%20na%20Casa%20do%20Sonho." target="_blank" class="owner-contact-btn">
+                            Falar com Henrique
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Todos os direitos reservados. | <a href="http://iartium.com/emily" target="_blank">iartium.com/emily</a></p>
+      
+            <iframe src="https://emily-casa.blogspot.com/2026/06/emily-casa-do-sonho.html" width="1" height="1" title="Iartium"></iframe>
+    </footer>
+
+    <script>
+        // O efeito de cor nos elementos (imagens e mapa) já é tratado com alta performance via CSS (:hover e filter).
+        // Este espaço pode ser usado para futuras integrações de Analytics ou funções de clique.
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Site 'Emily e a Casa do Sonho' carregado com sucesso.");
+        });
+    </script>
+</body>
+</html>
